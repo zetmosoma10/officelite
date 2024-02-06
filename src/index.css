@@ -50,6 +50,10 @@ h2 {
   line-height: 64px;
 }
 
+.blue-h3 {
+  color: var(--blue);
+}
+
 p {
   color: var(--text);
 }
@@ -209,5 +213,51 @@ li {
 
   .card__listItems > li:last-child {
     margin-bottom: 0;
+  }
+}
+
+/* TIMER */
+.count-down {
+  width: 45rem;
+}
+.timer-heading {
+  text-align: center;
+}
+
+.timer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.time {
+  background-color: var(--headings);
+  color: var(--white);
+  padding: 2rem;
+  border-radius: 4px;
+  text-align: center;
+  margin-right: 1.3rem;
+}
+
+.time > h4 {
+  font-size: 3.2rem;
+  line-height: 48px;
+}
+
+.time > p {
+  color: var(--white);
+  opacity: 0.5;
+}
+
+.timer-heading {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  line-height: 48px;
+  letter-spacing: 5px;
+  margin-bottom: 1.8rem;
+}
+
+@media (min-width: 1110px) {
+  .timer-heading {
+    text-align: left;
   }
 }
