@@ -1,0 +1,66 @@
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --headings: #333950;
+  --text: #747b95;
+  --white: #fff;
+  --blue: #5175ff;
+  --navy: #25293a;
+  --sky-blue: #829cff;
+  --error: #f05b5b;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 26px;
+}
+
+.container {
+  max-width: 1110px;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--headings);
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 48px;
+}
+
+h2 {
+  font-size: 5.6rem;
+  line-height: 64px;
+}
+
+p {
+  color: var(--text);
+}
+
+@media (min-width: 1110px) {
+  body {
+    font-size: 1.8rem;
+    line-height: 28px;
+  }
+
+  h1 {
+    font-size: 5.6rem;
+    line-height: 64px;
+  }
+}
