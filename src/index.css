@@ -261,3 +261,69 @@ li {
     text-align: left;
   }
 }
+
+/* FORMS */
+
+.form {
+  border: 1px solid red;
+
+  border-radius: 13px;
+  padding: 4rem 4rem 5rem;
+  background-color: var(--white);
+}
+
+input,
+.dropdown-btn {
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--headings);
+  border: none;
+  background-color: transparent;
+  text-indent: 10px;
+  outline: none;
+  width: 100%;
+}
+
+.input-container {
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2.4rem;
+}
+
+.dropdown-btn {
+  text-align: left;
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 1.6rem;
+  font-weight: bold;
+  color: var(--headings);
+}
+
+.options-container {
+  /* display: none; */
+  position: absolute;
+  z-index: 2;
+  border: 1px solid var(--text);
+  margin-top: 0.4rem;
+  padding: 1.5rem 2rem;
+  background-color: var(--white);
+  border-radius: 8px;
+  width: 100%;
+}
+
+.option {
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid var(--text);
+  margin-bottom: 1.6rem;
+}
+
+.option.ultimate {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
