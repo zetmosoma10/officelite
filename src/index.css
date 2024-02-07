@@ -265,8 +265,6 @@ li {
 /* FORMS */
 
 .form {
-  border: 1px solid red;
-
   border-radius: 13px;
   padding: 4rem 4rem 5rem;
   background-color: var(--white);
@@ -288,6 +286,9 @@ input,
   border-bottom: 1px solid var(--text);
   padding-bottom: 1.6rem;
   margin-bottom: 2.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .custom-dropdown {
@@ -300,12 +301,16 @@ input,
   text-align: left;
   border-bottom: 1px solid var(--text);
   padding-bottom: 1.6rem;
+  padding-right: 2rem;
   font-weight: bold;
   color: var(--headings);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 
 .options-container {
-  /* display: none; */
   position: absolute;
   z-index: 2;
   border: 1px solid var(--text);
@@ -320,10 +325,21 @@ input,
   padding-bottom: 1.6rem;
   border-bottom: 1px solid var(--text);
   margin-bottom: 1.6rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--headings);
+}
+
+.option > span {
+  opacity: 0.4;
 }
 
 .option.ultimate {
   padding: 0;
   border: 0;
   margin: 0;
+}
+
+.arrow-up {
+  transform: rotate(180deg);
 }

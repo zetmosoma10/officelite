@@ -4,7 +4,6 @@ function Button({ children, className, size, color }) {
   const sizeClass = size && `btn-${size}`;
   const colorClass = color && `btn-${color}`;
   const allClasses = classnames(sizeClass, colorClass, className);
-  console.log(allClasses);
 
   return <button className={allClasses}>{children}</button>;
 }
