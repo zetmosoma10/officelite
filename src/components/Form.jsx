@@ -52,7 +52,6 @@ function Form() {
       };
     });
   };
-  console.log(formData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,6 +65,18 @@ function Form() {
     });
 
     if (errors) return;
+    alert("Your form is submitted succesfully ");
+    setFormData((prevFormData) => {
+      return {
+        account: {
+          firstName: "",
+          email: "",
+          phone: "",
+          company: "",
+        },
+        error: {},
+      };
+    });
     console.log("submitted");
   };
 

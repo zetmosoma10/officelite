@@ -83,6 +83,23 @@ p {
   transition: all 0.3s;
 }
 
+a {
+  font-family: inherit;
+  font-weight: bold;
+  padding: 1.3rem 0;
+  border-radius: 28px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s;
+  text-decoration: none;
+  background-color: var(--blue);
+  width: 170px;
+  display: inline-block;
+  text-align: center;
+  color: var(--white);
+}
+
 .btn-sm {
   width: 17rem;
 }
@@ -128,16 +145,21 @@ p {
   min-width: 328px;
   padding: 4rem;
   text-align: center;
+  transition: all 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
 }
 
 .card-container {
   position: relative;
-  top: 680px;
+  top: 250px;
 }
 
 @media (min-width: 768px) {
   .card-container {
-    top: 456px;
+    top: 200px;
   }
 }
 
@@ -199,6 +221,7 @@ li {
 .grid {
   display: grid;
   gap: 3rem;
+  min-width: 530px;
 }
 
 @media (min-width: 1110px) {
@@ -248,7 +271,6 @@ li {
 
 .timer-container {
   display: flex;
-  justify-content: space-between;
 }
 
 .time {
@@ -290,6 +312,7 @@ li {
   border-radius: 13px;
   padding: 4rem 4rem 5rem;
   background-color: var(--white);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 input,
@@ -373,7 +396,7 @@ footer {
   flex-direction: column;
   justify-content: flex-end;
   background-color: var(--navy);
-  height: 1248px;
+  height: 900px;
   padding-bottom: 10rem;
   background-image: url("home/bg-pattern-footer.svg");
   background-repeat: no-repeat;
@@ -394,7 +417,7 @@ footer {
 
 @media (min-width: 768px) {
   footer {
-    height: 986px;
+    height: 750px;
   }
 
   .btn-footer {
@@ -420,7 +443,6 @@ footer {
 /* HERO */
 .hero {
   text-align: center;
-  margin-bottom: 10rem;
 }
 
 .hero__image {
@@ -470,9 +492,65 @@ nav {
   align-items: center;
 }
 
+nav > a {
+  background-color: transparent;
+}
+
 .layout {
   background-image: url("home/bg-pattern-header.svg");
   background-repeat: no-repeat;
   background-position-x: -100%;
   background-position-y: -50%;
+}
+
+/* SIGN-UP PAGE */
+.sign-up {
+  margin: 0 0 3rem;
+}
+
+.sign-up__content {
+  text-align: center;
+}
+
+.sign-up.grid {
+  row-gap: 9rem;
+}
+
+.sign-up__content > h2 {
+  margin-bottom: 1.6rem;
+}
+
+.sign-up__content > p {
+  margin-bottom: 6.4rem;
+}
+
+.sign-up__content .timer-heading {
+  text-align: center;
+  color: var(--headings);
+}
+
+.sign-up__content .timer-container {
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .sign-up__content {
+    text-align: left;
+  }
+
+  .sign-up__content > h2 {
+    margin-bottom: 2.4rem;
+  }
+
+  .sign-up__content .timer-heading {
+    text-align: left;
+  }
+
+  .sign-up__content .timer-container {
+    justify-content: start;
+  }
+
+  .sign-up__content > p {
+    margin-bottom: 4rem;
+  }
 }

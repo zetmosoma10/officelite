@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "./Button";
 
 function Hero() {
@@ -15,9 +16,7 @@ function Hero() {
           projects. Officelite is the new collaboration platform built with an
           intuitive interface to improve productivity.
         </p>
-        <Button className="btn" size="sm" color="blue">
-          Get Started
-        </Button>
+        <Link to="sign-up">Get Started</Link>
       </div>
     </section>
   );

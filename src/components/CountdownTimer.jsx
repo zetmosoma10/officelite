@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const GiveawayTimer = () => {
+const CountdownTimer = () => {
   const months = [
     "January",
     "February",
@@ -115,4 +115,4 @@ const GiveawayTimer = () => {
   );
 };
 
-export default GiveawayTimer;
+export default CountdownTimer;

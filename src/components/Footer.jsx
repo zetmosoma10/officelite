@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "./Button";
 import CardsContainer from "./CardsContainer";
 import CountdownTimer from "./CountdownTimer";
@@ -9,9 +10,7 @@ function Footer() {
       <footer>
         <div className="footer-content container">
           <CountdownTimer />
-          <Button className="btn btn-footer" size="sm" color="blue">
-            Get Started
-          </Button>
+          <Link to="sign-up">Get Started</Link>
         </div>
       </footer>
     </section>
