@@ -1,64 +1,113 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-const CountdownTimer = ({ targetDate }) => {
-  const calculateTimeLeft = () => {
-    const now = new Date();
-    const difference = targetDate - now;
+const GiveawayTimer = () => {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
-    if (difference <= 0) {
-      return {
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-      };
-    }
+  const [giveawayText, setGiveawayText] = useState("");
+  const [deadlineText, setDeadlineText] = useState("");
+  const [items, setItems] = useState([0, 0, 0, 0]);
 
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  const getRemainingTime = () => {
+    const today = new Date().getTime();
+    const t = futureTime - today;
+
+    const oneDay = 24 * 60 * 60 * 1000;
+    const oneHour = 60 * 60 * 1000;
+    const oneMinute = 60 * 1000;
+
+    let days = t / oneDay;
+    days = Math.floor(days);
+    let hours = Math.floor((t % oneDay) / oneHour);
+    let minutes = Math.floor((t % oneHour) / oneMinute);
+    let seconds = Math.floor((t % oneMinute) / 1000);
+
+    const values = [days, hours, minutes, seconds];
+
+    const formattedValues = values.map((item) =>
+      item < 10 ? `0${item}` : item
     );
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    return {
-      days,
-      hours,
-      minutes,
-      seconds,
-    };
+    setItems(formattedValues);
+
+    if (t < 0) {
+      clearInterval(countdown);
+      setDeadlineText("Sorry, this giveaway has expired!");
+    }
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
+  const tempDate = new Date();
+  const tempYear = tempDate.getFullYear();
+  const tempMonth = tempDate.getMonth();
+  const tempDay = tempDate.getDate();
+
+  const futureDate = new Date(tempYear, tempMonth, tempDay + 10, 11, 30, 0);
+  const futureTime = futureDate.getTime();
+
+  const year = futureDate.getFullYear();
+  const hours = futureDate.getHours();
+  const minutes = futureDate.getMinutes();
+
+  let month = futureDate.getMonth();
+  month = months[month];
+  const weekday = weekdays[futureDate.getDay()];
+  const date = futureDate.getDate();
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
+    setGiveawayText(
+      `Giveaway ends on ${weekday}, ${date} ${month} ${year} ${hours}:${minutes}am`
+    );
+  }, [weekday, date, month, year, hours, minutes]);
 
-    return () => clearInterval(timer);
-  }, [targetDate]);
+  useEffect(() => {
+    const countdown = setInterval(getRemainingTime, 1000);
+    return () => clearInterval(countdown);
+  }, []);
 
   return (
     <div className="count-down">
       <h3 className="timer-heading">
-        Coming <span className="blue-h3">4 Nov 2020</span>
+        Coming{" "}
+        <span className="blue-h3">
+          {date} {month} {year}
+        </span>
       </h3>
       <div className="timer-container">
         <div className="time">
-          <h4>{timeLeft.days}</h4>
+          <h4>{items[0]}</h4>
           <p>Days</p>
         </div>
         <div className="time">
-          <h4>{timeLeft.hours}</h4>
+          <h4>{items[1]}</h4>
           <p>Hours</p>
         </div>
         <div className="time">
-          <h4>{timeLeft.minutes}</h4>
+          <h4>{items[2]}</h4>
           <p>Minutes</p>
         </div>
         <div className="time">
-          <h4>{timeLeft.seconds}</h4>
+          <h4>{items[3]}</h4>
           <p>Seconds</p>
         </div>
       </div>
@@ -66,4 +115,4 @@ const CountdownTimer = ({ targetDate }) => {
   );
 };
 
-export default CountdownTimer;
+export default GiveawayTimer;

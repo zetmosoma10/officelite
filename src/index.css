@@ -32,6 +32,7 @@ body {
 .container {
   max-width: 1110px;
   margin: 0 auto;
+  padding: 2rem;
 }
 
 h1,
@@ -124,9 +125,26 @@ p {
 .card {
   border-radius: 13px;
   background-color: var(--white);
-  width: 100%;
+  min-width: 328px;
   padding: 4rem;
   text-align: center;
+}
+
+.card-container {
+  position: relative;
+  top: 680px;
+}
+
+@media (min-width: 768px) {
+  .card-container {
+    top: 456px;
+  }
+}
+
+@media (min-width: 1110px) {
+  .card-container {
+    top: 221px;
+  }
 }
 
 .card > h2 {
@@ -217,11 +235,15 @@ li {
 }
 
 /* TIMER */
-.count-down {
-  width: 45rem;
+
+@media (min-width: 1110px) {
+  .count-down {
+    margin: 0;
+  }
 }
 .timer-heading {
   text-align: center;
+  color: var(--white);
 }
 
 .timer-container {
@@ -342,4 +364,55 @@ input,
 
 .arrow-up {
   transform: rotate(180deg);
+}
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: var(--navy);
+  height: 1248px;
+  padding-bottom: 10rem;
+  background-image: url("home/bg-pattern-footer.svg");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
+}
+
+.footer-container {
+  min-width: 530px;
+}
+
+.btn-footer {
+  margin-top: 4rem;
+}
+.footer-content {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  footer {
+    height: 986px;
+  }
+
+  .btn-footer {
+    margin-top: 4.8rem;
+  }
+}
+
+@media (min-width: 1110px) {
+  footer {
+    height: 603px;
+    padding-bottom: 9rem;
+    align-items: center;
+  }
+
+  .footer-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

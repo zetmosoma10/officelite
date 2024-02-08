@@ -3,7 +3,7 @@ import Card from "./Card";
 
 function CardsContainer() {
   return (
-    <div className="grid cols-3 card-container">
+    <div className="grid cols-3 card-container container">
       <Card>
         <div className="card__info">
           <p className="card__type">Basic</p>
