@@ -1,5 +1,13 @@
+import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+
 function HomePage() {
-  return <div>Home Page</div>;
+  return (
+    <section className="home">
+      <Hero />
+      <Footer />
+    </section>
+  );
 }
 
 export default HomePage;

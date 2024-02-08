@@ -1,17 +1,18 @@
-import Button from "./components/Button";
-import Card from "./components/Card";
-import CardsContainer from "./components/CardsContainer";
-import CountdownTimer from "./components/CountdownTimer";
-import Footer from "./components/Footer";
-import Form from "./components/Form";
-import Hero from "./components/Hero";
-import NavBar from "./components/NavBar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import SignUp from "./pages/SignUp";
+import HomePage from "./pages/homePage";
 
 function App() {
   return (
-    <>
-      <NavBar />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="sign-up" element={<SignUp />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

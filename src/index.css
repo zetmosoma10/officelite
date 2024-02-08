@@ -469,3 +469,10 @@ nav {
   justify-content: start;
   align-items: center;
 }
+
+.layout {
+  background-image: url("home/bg-pattern-header.svg");
+  background-repeat: no-repeat;
+  background-position-x: -100%;
+  background-position-y: -50%;
+}
