@@ -416,3 +416,56 @@ footer {
     align-items: center;
   }
 }
+
+/* HERO */
+.hero {
+  text-align: center;
+  margin-bottom: 10rem;
+}
+
+.hero__image {
+  width: 100%;
+  order: 1;
+}
+
+.hero__content {
+  order: 2;
+}
+
+.hero__content > h1,
+.hero__content > p {
+  margin-bottom: 2.4rem;
+}
+
+.hero.grid {
+  row-gap: 6.4rem;
+}
+
+@media (min-width: 768px) {
+  .hero__content {
+    order: 1;
+    align-self: center;
+    text-align: left;
+  }
+
+  .hero__image {
+    order: 2;
+  }
+
+  .cols-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1110px) {
+  .hero__content > p {
+    margin-bottom: 3.2rem;
+  }
+}
+
+/* NavBar */
+nav {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
