@@ -1,9 +1,12 @@
 import CountdownTimer from "../components/CountdownTimer";
 import Form from "../components/Form";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function SignUp() {
   return (
     <section className="sign-up ">
+      <ToastContainer />
       <section className="container grid cols-2">
         <div className="sign-up__content">
           <h2>Work smarter. Save time.</h2>

@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import Button from "./Button";
-import joi from "joi-browser";
-import { formSchema } from "../validateSchema";
+import { validateInput } from "../validateSchema";
+import FormInput from "./FormInput";
 
 function Form() {
   const [formData, setFormData] = useState({
@@ -10,44 +11,19 @@ function Form() {
       email: "",
       phone: "",
       company: "",
+      plans: "",
     },
     error: {},
   });
-  const [toggle, setToggle] = useState(false);
-
-  const errorStyles = {
-    borderColor: "#f05b5b",
-  };
-
-  const validate = () => {
-    const option = { abortEarly: false };
-    const results = joi.validate(formData.account, formSchema, option);
-    if (!results.error) return null;
-
-    const errors = {};
-
-    for (const item of results.error.details) {
-      const name = item.path[0];
-      const errorMessage = item.message;
-
-      errors[name] = errorMessage;
-    }
-
-    return errors;
-  };
-
-  const handleToggle = () => {
-    setToggle((prevToggle) => !prevToggle);
-  };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
         account: {
           ...prevFormData.account,
-          [name]: value,
+          [name]: type === "checkbox" ? checked : value,
         },
       };
     });
@@ -56,7 +32,7 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const errors = validate();
+    const errors = validateInput(formData.account);
     setFormData((prevFormData) => {
       return {
         account: { ...prevFormData.account },
@@ -65,7 +41,7 @@ function Form() {
     });
 
     if (errors) return;
-    alert("Your form is submitted succesfully ");
+    toast.success("Your form is submitted succesfully ");
     setFormData((prevFormData) => {
       return {
         account: {
@@ -73,89 +49,64 @@ function Form() {
           email: "",
           phone: "",
           company: "",
+          plans: "",
         },
         error: {},
       };
     });
-    console.log("submitted");
+  };
+
+  const errorStyles = {
+    borderColor: "#f05b5b",
   };
 
   return (
     <form onSubmit={handleSubmit} className="form">
+      <FormInput
+        type="text"
+        handleChange={handleChange}
+        placeholder="Name"
+        name="firstName"
+        formData={formData}
+      />
+      <FormInput
+        type="email"
+        handleChange={handleChange}
+        placeholder="Email"
+        name="email"
+        formData={formData}
+      />
       <div
-        style={formData.error.firstName && errorStyles}
-        className="input-container"
+        className="custom-dropdown"
+        style={formData.error.plans && errorStyles}
       >
-        <input
-          type="text"
+        <select
+          name="plans"
+          className="select-box"
+          value={formData.account.plans}
           onChange={handleChange}
-          value={formData.account.firstName}
-          name="firstName"
-          placeholder="Name"
-        />
-        {formData.error.firstName && <img src="sign-up/icon-cross.svg" />}
+        >
+          <option value="">--Choose option--</option>
+          <option value="basic">Basic Pack Free</option>
+          <option value="pro">Pro Pack $9.99</option>
+          <option value="ultimate">Ultimate Pack $19.99</option>
+        </select>
+        <img className="select-icon" src="sign-up/icon-arrow-down.svg" />
       </div>
-      <div
-        style={formData.error.email && errorStyles}
-        className="input-container"
-      >
-        <input
-          type="email"
-          onChange={handleChange}
-          value={formData.account.email}
-          name="email"
-          placeholder="Email Address"
-        />
-        {formData.error.email && <img src="sign-up/icon-cross.svg" />}
-      </div>
-      <div className="custom-dropdown">
-        <div onClick={handleToggle} className="dropdown-btn">
-          <div>Option {toggle && <span>Opened</span>} </div>
-          <img
-            className={toggle ? `arrow-up` : ""}
-            src="sign-up/icon-arrow-down.svg"
-          />
-        </div>
-        {toggle ? (
-          <div className="options-container">
-            <div className="option basic">
-              Basic <span> Free</span>
-            </div>
-            <div className="option prop">
-              Pro <span>$9.99</span>
-            </div>
-            <div className="option ultimate">
-              Ultimate <span>$19.99</span>
-            </div>
-          </div>
-        ) : null}
-      </div>
-      <div
-        style={formData.error.phone && errorStyles}
-        className="input-container"
-      >
-        <input
-          type="text"
-          onChange={handleChange}
-          value={formData.account.phone}
-          name="phone"
-          placeholder="Phone Number"
-        />
-        {formData.error.phone && <img src="sign-up/icon-cross.svg" />}
-      </div>
-      <div
-        style={formData.error.company && errorStyles}
-        className="input-container"
-      >
-        <input
-          type="text"
-          onChange={handleChange}
-          value={formData.account.company}
-          name="company"
-          placeholder="Company"
-        />
-        {formData.error.company && <img src="sign-up/icon-cross.svg" />}
-      </div>
+      <FormInput
+        type="text"
+        handleChange={handleChange}
+        placeholder="Phone number"
+        name="phone"
+        formData={formData}
+      />
+      <FormInput
+        type="text"
+        handleChange={handleChange}
+        placeholder="Company"
+        name="company"
+        formData={formData}
+      />
       <Button className="btn" size="lg" color="blue">
         Get on the list
       </Button>
